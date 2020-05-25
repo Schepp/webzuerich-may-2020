@@ -30,7 +30,7 @@ APNG is supported in every modern browser!
 <ul>
   <li>✅ 24 bit of colors supported!</li>
   <li>✅ 8 bit of transparency supported!</li>
-  <li>❌❌ Even more humongous file sizes... 💩 (4x GIF)</li>
+  <li>❌❌ HUMONGOUS file sizes... 💩 (4x GIF)</li>
   
 </ul>
 ---
