@@ -101,6 +101,7 @@ AV1 is the next generation video format
 <ul>
   <li>✅ Backed by all of the browser vendors</li>
   <li>✅ 40-50% better compression than H.264!</li>
+  <li>(?) Transparency?</li>
   <li>❌ Supported by Chrome and Firefox, but not yet Safari 💩</li>
   <li>⚠ [There is a polyfill for Safari</a>, though](https://www.singhkays.com/blog/av1-ecosystem-update-july-2019/")</li>
   
