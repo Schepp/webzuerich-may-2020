@@ -15,7 +15,7 @@ Luckily Houdini brings us the possibility to declare the type of a CSS custom pr
   initialValue: '0'
 });</code></pre>
 
-<p class="fragment">👆 This turns a CSS custom properties from a dumb string into a real number.</p>
+<p class="fragment">👆 This turns a CSS custom properties from a dumb string into a real number! 🤩</p>
 ---
 Now we can animate it.
 
@@ -41,11 +41,11 @@ height: 100%;
   animation: zero-to-one 1000ms infinite;
   background-image: conic-gradient(
     blue calc(var(--multiply) * 40%), 
-    red calc(var(--multiply) * 40%), 
+    red 0, 
     red calc(var(--multiply) * 70%), 
-    yellow calc(var(--multiply) * 70%), 
+    yellow 0, 
     yellow calc(var(--multiply) * 90%), 
-    transparent calc(var(--multiply) * 90%)
+    transparent 0
   );
   border-radius: 50%;
   filter: drop-shadow(10px 10px 10px #000);
@@ -80,5 +80,17 @@ and you'll have a CSS-only slideshow
 }</code></pre>
 
 <div id="slideshow" style="position: absolute; right: 0; width: 820px; top: 250px; border: 10px solid #fff; background: #fff; outline: 1px solid #000"><div></div></div>
+
+---
+
+Custom property type declaration will soon also be available in CSS itself:
+
+```css
+@property --multiply {
+  syntax: '<number>';
+  inherits: false;
+  initialValue: '0';
+}
+```
 
 

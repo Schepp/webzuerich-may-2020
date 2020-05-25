@@ -81,10 +81,9 @@ H.264-Video in image elements
 ---
 <ul>
   <li>✅ 24 bit of colors supported!</li>
-  <li>❌ No transparency supported</li>
+  <li>❌ No transparency supported (only in [WebM](https://developers.google.com/web/updates/2013/07/Alpha-transparency-in-Chrome-video?hl=en))</li>
   <li>✅ Small file sizes</li>
-  <li>❌ Using video in `<img>` only supported in Safari 💩</li>
-  
+  <li>❌ Using video in `<img>` only supported in Safari 💩</li> 
 </ul>
 ---
 Last but not least...
