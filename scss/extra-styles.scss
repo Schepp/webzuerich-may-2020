@@ -1,0 +1,494 @@
+@keyframes chart-open {
+  from {
+    --multiply: 0;
+  }
+  20% {
+    --multiply: 1;
+  }
+  to {
+    --multiply: 1;
+  }
+}
+
+@keyframes zero-to-one {
+  from {
+    --multiply: 0;
+  }
+  20% {
+    --multiply: 1;
+  }
+  to {
+    --multiply: 1;
+  }
+}
+
+@keyframes cross-fade {
+  0% {
+    --cross-fade: 0;
+  }
+  50% {
+    --cross-fade: 1;
+  }
+  100% {
+    --cross-fade: 0;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+}
+
+.reveal {
+  color: #fff;
+  font-family: 'Bangers', 'Lato', sans-serif;
+  font-size: 60px;
+  letter-spacing: 2px;
+  text-shadow: 1px -1px 1px #000, 1px 1px 1px #000, -1px -1px 1px #000, -1px 1px 1px #000;
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.5em
+  }
+
+  h3 {
+    padding-bottom: 0.25em;
+    font-size: 1.5em;
+    text-transform: none;
+  }
+
+  h4 {
+    font-size: 1em;
+  }
+
+  h1, h2, h3, h4, h5, h6, ol, ul, p, table, pre {
+    margin-bottom: 1rem;
+    color: #fff;
+    font-family: 'Bangers', 'Lato', sans-serif;
+    line-height: 1.25;
+    text-shadow: inherit;
+  }
+
+  a:not(.image) {
+    color: rgb(183, 0, 53);
+    text-shadow: 1px -1px 1px #fff, 1px 1px 1px #fff, -1px -1px 1px #fff, -1px 1px 1px #fff;
+
+    &:hover {
+      color: rgb(183, 0, 53);
+      text-decoration: underline;
+      text-shadow: 1px -1px 1px #fff, 1px 1px 1px #fff, -1px -1px 1px #fff, -1px 1px 1px #fff;
+    }
+  }
+
+  pre {
+    box-shadow: none;
+    font-size: inherit;
+    text-transform: none;
+  }
+
+  code {
+    padding: 0 10px;
+    background-color: #333;
+    background-clip: padding-box;
+    border: solid transparent;
+    border-width: 0 28px;
+    border-image: url('../images/marker-border-222.png') 9 30 stretch;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.8em;
+    text-transform: none;
+    vertical-align: middle;
+  }
+
+  del {
+    text-decoration-color: rgb(183, 0, 53);
+  }
+
+  iframe,
+  pre code {
+    max-height: 90%;
+    padding: 10px 20px;
+    filter: none;
+    background-clip: padding-box;
+    border: 30px solid transparent;
+    border-image: url('../images/comic-border.png') 30 30 stretch;
+  }
+
+  pre {
+    margin-top: -1rem !important;
+  }
+
+  pre code {
+    background-color: #111;
+    font-size: 0.6em !important;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  iframe {
+    background-color: #fff;
+  }
+
+  html.faded & .backgrounds {
+    opacity: 0.5;
+    background-blend-mode: multiply;
+  }
+
+  html.grayscaled & .backgrounds {
+    filter: grayscale(1);
+  }
+
+  .right {
+    margin-left: 33%;
+  }
+
+  section img,
+  section video {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  section div[id] {
+    display: inline-block;
+  }
+
+  section div[id] img,
+  section div[id] video {
+    max-width: 100%;
+    max-height: none;
+    margin: 0 auto;
+  }
+
+  li {
+    margin-bottom: 1rem;
+  }
+
+  p + ul {
+    margin-top: 1em;
+  }
+
+  .comic-border {
+    padding: 10px;
+    border: 1px solid #000;
+    background: #fff;
+  }
+
+  table {
+    table-layout: fixed;
+    width: 100%;
+    max-width: 1900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em 0;
+    font-size: 1em;
+    border-top: 1px solid currentcolor;
+    border-bottom: 1px solid currentcolor;
+
+    .smaller & {
+      font-size: 0.8em;
+    }
+
+    th, td {
+      padding: 0.1em 0.2em;
+      white-space: nowrap;
+      text-align: center;
+      border-bottom: 0.05em dotted currentcolor;
+    }
+  }
+
+  video {
+    width: auto;
+    height: 80%;
+  }
+
+  .datatable + table {
+    font-size: 0.5em;
+    line-height: 1.4;
+    border-collapse: collapse;
+
+    tr:nth-child(even) {
+      background: rgba(255, 255, 255, .5);
+    }
+    th, td {
+      text-align: left;
+    }
+  }
+
+  blockquote {
+    quotes: "“" "”" "‘" "’";
+    position: relative;
+    margin-bottom: 3rem;
+    padding: 3rem 3rem;
+    background-color: #fff;
+    color: #000;
+    border-radius: 50%;
+    // font-family: 'Lobster', 'Times New Roman', Times, serif;
+    font-size: 0.65em;
+    line-height: 1.4;
+    font-style: normal;
+    text-align: center;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 1));
+    text-shadow: none;
+
+    &:before,
+    p:before {
+      content: '';
+      width: 25%;
+      height: 350px;
+    }
+
+    &:before {
+      float: left;
+      shape-outside: polygon(0 0, 100% 0, 0 50%, 100% 100%, 0 100%);
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      left: 60%;
+      border: 60px solid #fff;
+      border-color: #fff transparent transparent #fff;
+    }
+
+    p {
+      display: inline !important;
+      color: inherit;
+      font-family: inherit;
+
+      &:before {
+        float: right;
+        shape-outside: polygon(100% 0, 0 0, 100% 50%, 0 100%, 100% 100%);
+      }
+
+      &:first-letter {
+        font-size: 1.5em;
+      }
+    }
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+
+    br {
+      line-height: 2;
+    }
+  }
+
+  .inline-row {
+    > div, img, pre {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    max-width: 100%;
+
+    > * {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    @for $i from 1 to 10 {
+      > *:first-child:nth-last-child(#{$i}) {
+        &,
+        & ~ * {
+          flex: 1 1 calc(100% / #{$i});
+          min-width: 1px;
+        }
+      }
+    }
+
+    iframe,
+    img {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      margin: 0 5px;
+    }
+  }
+
+  .slide-background {
+    &:not([data-background-hash]) {
+      background-size: cover;
+      background-blend-mode: lighten;
+
+      &:nth-child(3n+1) {
+        background-image: linear-gradient(to bottom, #1f61a8, #1f61a8), url('../images/backgrounds/yellow-comic-zoom-lines.jpg');
+      }
+      &:nth-child(3n+2) {
+        background-image: linear-gradient(to bottom, #088e4c, #088e4c), url('../images/backgrounds/yellow-comic-zoom-lines.jpg');
+        background-color: #088e4c;
+      }
+      &:nth-child(3n+3) {
+        background-image: linear-gradient(to bottom, #9a3e48, #9a3e48), url('../images/backgrounds/yellow-comic-zoom-lines.jpg');
+      }
+    }
+  }
+
+  .slide-number {
+    text-shadow: none;
+  }
+
+  .image-grid-headline {
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%,-200%);
+  }
+
+  .image-grid {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #000;
+    font-size: 0;
+
+    .image {
+      display: inline-block;
+      min-height: 400px;
+      width: 50%;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      &:nth-child(1) {
+        background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/53819/re7-chris-large.jpg");
+      }
+
+      &:nth-child(2) {
+        background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/53819/bioshock-large.jpg");
+      }
+
+      &:nth-child(3) {
+        background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/53819/dishonored-large.jpg");
+      }
+    }
+
+    @supports (display: grid) {
+      .image {
+        width: auto;
+        min-height: 0;
+
+        &:nth-child(1) {
+          grid-column: 1 / span 1;
+          grid-row: 1 / 50;
+          clip-path: polygon(0 0, 0 86%, 90% 81%, 100% 0);
+          margin-top: 0;
+        }
+
+        &:nth-child(2) {
+          grid-column: 2 / span 1;
+          grid-row: 1 / 50;
+          clip-path: polygon(13% 0, 4% 84%, 100% 100%, 100% 0%);
+          margin-top: 0;
+          margin-left: -15%;
+          margin-bottom: 18px;
+        }
+
+        &:nth-child(3) {
+          grid-column: 1 / span 2;
+          grid-row: 50 / 100;
+          clip-path: polygon(45% 0, 100% 13%, 100% 100%, 0 100%, 0 4.5%);
+          margin-top: -95px;
+        }
+      }
+    }
+  }
+
+  #format-mjpeg {
+    img {
+      vertical-align: bottom;
+    }
+  }
+
+  .resizable {
+    resize: both;
+    overflow: auto;
+  }
+
+  #css-background-position div::before,
+  #css-background-position div::after {
+    content: '';
+  }
+
+  #css-animated-backgrounds div,
+  #css-masks div {
+    animation-duration: 5000ms !important;
+    animation-play-state: running;
+    animation-fill-mode: both;
+  }
+
+  .future #css-animated-backgrounds div,
+  .future #css-masks div {
+    animation-play-state: paused;
+  }
+
+  div[id^="markup-"],
+  div[id^="css-"] {
+    font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
+    color: #000;
+    text-shadow: none;
+  }
+
+  div[id^="markup-"] {
+    img,
+    svg,
+    image {
+      vertical-align: bottom;
+    }
+  }
+
+  #slideshow div {
+    background-image: -webkit-cross-fade(
+      url('../images/iron-man.jpg'),
+      url('../images/hawkeye.jpg'),
+      calc(100% * var(--cross-fade)));
+    background-size: cover;
+    animation: cross-fade 10000ms infinite;
+  }
+
+  #canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #000;
+  }
+
+  .boom {
+    position: relative;
+    font-size: 300px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 80vh;
+      height: 60vh;
+      background-image: url('../images/explosion/explosion.webp');
+      background-repeat: no-repeat;
+      background-size: contain;
+      transform: translate(-65%, -35%) scale(3);
+      mix-blend-mode: multiply;
+    }
+  }
+}

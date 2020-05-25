@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Fronteers Jam Session 2019: Things you didn't know about images</title>
+
+    <meta name="description" content="Things you didn't know about images on the web">
+
+    <meta name="robots" content="noindex, nofollow">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Imagery on the Web">
+    <meta property="og:site_name" content="Things you didn't know about images">
+    <meta property="og:url" content="https://schepp.github.io/webzuerich-may-2020/">
+    <meta property="og:image" content="https://schepp.github.io/webzuerich-may-2020/images/captain-america-shield.jpg">
+    <meta property="article:published_time" content="2020-05-25">
+    <meta property="article:author" content="https://twitter.com/derSchepp">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.min.css">
+    <link rel="stylesheet" href="bower_components/reveal.js/css/theme/moon.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
+
+    <!-- Custom Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link rel="stylesheet" href="css/extra-styles.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+        document.write('<link rel="stylesheet" href="bower_components/reveal.js/css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section data-markdown="markdown/start.md"
+                 data-separator="^-----\n"
+                 data-vertical="^---\n"
+                 data-notes="^Note:"
+                 data-charset="utf-8">
+        </section>
+        <section data-markdown="markdown/01_image-alias.md"
+                 data-separator="^-----\n"
+                 data-vertical="^---\n"
+                 data-notes="^Note:"
+                 data-charset="utf-8">
+        </section>
+        <section data-markdown="markdown/02_alt-attribute.md"
+                 data-separator="^-----\n"
+                 data-vertical="^---\n"
+                 data-notes="^Note:"
+                 data-charset="utf-8">
+        </section>
+        <section data-markdown="markdown/03_decode-method.md"
+                 data-separator="^-----\n"
+                 data-vertical="^---\n"
+                 data-notes="^Note:"
+                 data-charset="utf-8">
+        </section>
+        <section data-markdown="markdown/04_pseudo-elements.md"
+                 data-separator="^-----\n"
+                 data-vertical="^---\n"
+                 data-notes="^Note:"
+                 data-charset="utf-8">
+        </section>
+        <section data-markdown="markdown/05_houdini.md"
+                 data-separator="^-----\n"
+                 data-vertical="^---\n"
+                 data-notes="^Note:"
+                 data-charset="utf-8">
+        </section>
+        <section data-markdown="markdown/06_animated-formats.md"
+                 data-separator="^-----\n"
+                 data-vertical="^---\n"
+                 data-notes="^Note:"
+                 data-charset="utf-8">
+        </section>
+        <section data-markdown="markdown/end.md"
+                 data-separator="^-----\n"
+                 data-vertical="^---\n"
+                 data-notes="^Note:"
+                 data-charset="utf-8">
+        </section>
+    </div>
+
+</div>
+
+<script src="bower_components/reveal.js/lib/js/head.min.js"></script>
+<script src="bower_components/reveal.js/js/reveal.min.js"></script>
+
+<script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+        height: 1080,
+
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        chart: {
+            defaults: {
+                global: {
+                    title: {fontColor: "#000"},
+                    tooltip: {bodyFontSize: 20, titleFontSize: 20, backgroundColor: "#000"},
+                    legend: {
+                        labels: {
+                            fontColor: "#000",
+                            fontSize: 20
+                        },
+                    },
+                },
+                scale: {
+                    scaleLabel: {
+                        fontColor: "#000",
+                        fontSize: 20
+                    },
+                    gridLines: {color: "#000", zeroLineColor: "#000"},
+                    ticks: {
+                        fontColor: "#000",
+                        fontSize: 20
+                    },
+                }
+            },
+            line: {
+                borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"],
+                "borderDash": [[5, 10], [0, 0]]
+            },
+            bar: {backgroundColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"]},
+            pie: {backgroundColor: [["rgba(0,0,0,.8)", "rgba(220,20,20,.8)", "rgba(20,220,20,.8)", "rgba(220,220,20,.8)", "rgba(20,20,220,.8)"]]},
+            radar: {borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"]},
+        },
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            {
+                src: 'bower_components/reveal.js/lib/js/classList.js', condition: function () {
+                    return !document.body.classList;
+                }
+            },
+            {
+                src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+            {
+                src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+            {
+                src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            },
+            {
+                src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function () {
+                    return !!document.body.classList;
+                }
+            },
+            {
+                src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function () {
+                    return !!document.body.classList;
+                }
+            },
+            {
+                src: 'bower_components/reveal.js/plugin/live-coding/live-coding.js',
+                async: true,
+                condition: function () {
+                    return !!document.body.classList;
+                }
+            },
+            {src: 'bower_components/reveal.js/plugin/chart/Chart.min.js'},
+            {src: 'bower_components/reveal.js/plugin/chart/csv2chart.js'}
+        ]
+    });
+
+</script>
+<script>
+    document.addEventListener('click', (e) => {
+       const validatorLink = e.target.closest('[target="validator"]');
+
+       if (!validatorLink) {
+           return;
+       }
+
+       window.open(validatorLink.href, 'validator', `width=${screen.availWidth - 40},height=${screen.availHeight - 120}`);
+
+       e.preventDefault();
+    });
+
+    Reveal.addEventListener( 'ready', () => {
+        const map = {
+            'css-image-focus-setter': 'div {\n' +
+                '  background-image: url(\'images/thor.jpg\');\n' +
+                '  background-size: cover;\n' +
+                '  background-position: %POSITION%;\n' +
+                '}',
+            'css-image-focus-2-setter': 'div {\n' +
+                '  background-image: -webkit-image-set(\n' +
+                '    url(\'images/thor.jpg\') 1x, \n' +
+                '    url(\'images/thor2x.jpg\') 2x);\n' +
+                '  background-size: cover;\n' +
+                '  background-position: %POSITION%;\n' +
+                '}',
+            'css-image-focus-3-setter': 'img {\n' +
+                '  object-fit: cover;\n' +
+                '  object-position: %POSITION%;\n' +
+                '}',
+        };
+
+        Object.keys(map).forEach((id) => {
+            const obj = document.getElementById(id);
+
+            if (!obj) return;
+
+            const handleMouse = (e) => {
+                const rects = obj.getBoundingClientRect();
+                const objWidth = rects.width * Reveal.getScale();
+                const objHeight = rects.height * Reveal.getScale();
+                const xpos = e.offsetX;
+                const ypos = e.offsetY;
+                const xpercent = Math.round((xpos / objWidth) * 100);
+                const ypercent = Math.round((ypos / objHeight) * 100);
+                const position = xpercent + '% ' + ypercent +  '%';
+
+                obj.setAttribute('data-coordinates', position);
+
+                if (e.type === 'click') {
+                    const editor = document.querySelector('.css[data-livecoding-id="' + id.replace('-setter', '') + '"]');
+
+                    editor.textContent = map[id].replace('%POSITION%', position);
+
+                    const keyupEvent = document.createEvent('HTMLEvents');
+                    keyupEvent.initEvent('keyup', false, true);
+                    editor.dispatchEvent(keyupEvent);
+
+                    const focusoutEvent = document.createEvent('HTMLEvents');
+                    focusoutEvent.initEvent('focusout', false, true);
+                    editor.dispatchEvent(focusoutEvent);
+                }
+            };
+
+            obj.addEventListener('mousemove', handleMouse);
+            obj.addEventListener('click', handleMouse);
+        });
+
+        (function(){
+            //canvas init
+            var canvas = document.getElementById("canvas");
+
+            if (!canvas) return;
+
+            var ctx = canvas.getContext("2d");
+
+            //canvas dimensions
+            var W = window.innerWidth;
+            var H = window.innerHeight;
+            canvas.width = W;
+            canvas.height = H;
+
+            //snowflake particles
+            var mp = 25; //max particles
+            var particles = [];
+            for(var i = 0; i < mp; i++)
+            {
+                particles.push({
+                    x: Math.random()*W, //x-coordinate
+                    y: Math.random()*H, //y-coordinate
+                    r: Math.random()*4+1, //radius
+                    d: Math.random()*mp //density
+                })
+            }
+
+            //Lets draw the flakes
+            function draw()
+            {
+                ctx.clearRect(0, 0, W, H);
+
+                ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+                ctx.beginPath();
+                for(var i = 0; i < mp; i++)
+                {
+                    var p = particles[i];
+                    ctx.moveTo(p.x, p.y);
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI*2, true);
+                }
+                ctx.fill();
+                update();
+            }
+
+            //Function to move the snowflakes
+            //angle will be an ongoing incremental flag. Sin and Cos functions will be applied to it to create vertical and horizontal movements of the flakes
+            var angle = 0;
+            function update()
+            {
+                angle += 0.01;
+                for(var i = 0; i < mp; i++)
+                {
+                    var p = particles[i];
+                    //Updating X and Y coordinates
+                    //We will add 1 to the cos function to prevent negative values which will lead flakes to move upwards
+                    //Every particle has its own density which can be used to make the downward movement different for each flake
+                    //Lets make it more random by adding in the radius
+                    p.y += Math.cos(angle+p.d) + 1 + p.r/2;
+                    p.x += Math.sin(angle) * 2;
+
+                    //Sending flakes back from the top when it exits
+                    //Lets make it a bit more organic and let flakes enter from the left and right also.
+                    if(p.x > W+5 || p.x < -5 || p.y > H)
+                    {
+                        if(i%3 > 0) //66.67% of the flakes
+                        {
+                            particles[i] = {x: Math.random()*W, y: -10, r: p.r, d: p.d};
+                        }
+                        else
+                        {
+                            //If the flake is exitting from the right
+                            if(Math.sin(angle) > 0)
+                            {
+                                //Enter from the left
+                                particles[i] = {x: -5, y: Math.random()*H, r: p.r, d: p.d};
+                            }
+                            else
+                            {
+                                //Enter from the right
+                                particles[i] = {x: W+5, y: Math.random()*H, r: p.r, d: p.d};
+                            }
+                        }
+                    }
+                }
+            }
+
+            //animation loop
+            setInterval(draw, 33);
+        })();
+    });
+
+    window.CSS.registerProperty({
+        name: '--multiply',
+        syntax: '<number>',
+        inherits: false,
+        initialValue: '0'
+    });
+
+    window.CSS.registerProperty({
+        name: '--cross-fade',
+        syntax: '<number>',
+        inherits: false,
+        initialValue: '0'
+    });
+
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a[href$=".txt"]');
+
+        if (!link) return;
+
+        const section = link.closest('section[data-markdown]');
+
+        if (!section) return;
+
+        const editor = section.querySelector('.liveCoding[contenteditable]');
+
+        if (!editor) return;
+
+        fetch(link.href).then(result => result.text()).then((result) => {
+            editor.textContent = result;
+
+            const keyupEvent = document.createEvent('HTMLEvents');
+            keyupEvent.initEvent('keyup', false, true);
+            editor.dispatchEvent(keyupEvent);
+
+            const focusoutEvent = document.createEvent('HTMLEvents');
+            focusoutEvent.initEvent('focusout', false, true);
+            editor.dispatchEvent(focusoutEvent);
+        });
+
+        e.preventDefault();
+    }, true);
+</script>
+</body>
+</html>
